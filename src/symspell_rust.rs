@@ -52,7 +52,7 @@ impl PyComposition {
         Ok(self.prob_log_sum)
     }
 }
-#[pyclass(module = "symspell_rs")]
+#[pyclass(module = "symspell_rust")]
 pub struct SymspellPy {
     symspell: SymSpell<UnicodeStringStrategy>,
 }
@@ -197,7 +197,7 @@ impl SymspellPy {
 
 
 #[pymodule]
-fn symspell_rs(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
+fn symspell_rust(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
     m.add_class::<SymspellPy>()?;
     Ok(())
 }

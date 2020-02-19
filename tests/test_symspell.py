@@ -1,4 +1,4 @@
-import symspell_rs as model
+import symspell_rust as model
 def test_models():
     # import time
     # print(SymspellPy(max_distance=2,prefix_length=7,count_threshold=1))

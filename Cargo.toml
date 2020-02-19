@@ -1,5 +1,5 @@
 [package]
-name = "symspell_rs"
+name = "symspell_rust"
 version = "0.4.0"
 license = "MIT"
 authors = ["zoho-labs"]

@@ -42,7 +42,7 @@ mod edit_distance;
 mod string_strategy;
 mod suggestion;
 mod symspell;
-mod symspell_rs;
+mod symspell_rust;
 mod composition;
 #[cfg(target_arch = "wasm32")]
 mod wasm;
