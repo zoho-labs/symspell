@@ -2,11 +2,11 @@
 name = "symspell_rs"
 version = "0.4.0"
 license = "MIT"
-authors = ["Rene Klacan <rene.klacan@gmail.com>"]
+authors = ["zoho-labs"]
 keywords = ["spellcheck"]
-description = "Spelling correction & Fuzzy search"
-homepage = "https://github.com/reneklacan/symspell"
-repository = "https://github.com/reneklacan/symspell"
+description = "Fast and Accurate Spelling correction"
+homepage = "https://github.com/zoho-labs/symspell"
+repository = "https://github.com/zoho-labs/symspell"
 exclude = [
     "data/*","examples/*","Cargo.lock",
 ]
@@ -37,6 +37,6 @@ serde = "^1.0.59"
 serde_derive = "^1.0.59"
 wasm-bindgen = { version = "^0.2", features = ["serde-serialize"]}
 
-[target.wasm32-unknown-unknown.devSymspellPySymspellPySymspellPySymspellPy-dependencies]
+[target.wasm32-unknown-unknown.dev-dependencies]
 wasm-bindgen-test = "^0.2"
 
