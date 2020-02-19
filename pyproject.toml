@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "symspell_rs"
+version = "0.4.0"
+license = "MIT"
+description="Fast and Accurate SpellChecker"
+authors = ["VJAYSLN"]
+readme = "README.md"
+keywords = ["spellcheck"]
+homepage = ""
+repository = ""
+packages = [{ include = "symspell_rs", from="src"},]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["setuptools_rust","poetry>=0.12","pyo3-pack>=0.7.0-beta.1"]
+build-backend = "pyo3_pack"
