@@ -1,11 +1,10 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
-// extern crate symspell as model;
-use string_strategy::UnicodeStringStrategy;
-use symspell::{SymSpell, SymSpellBuilder, Verbosity};
-use edit_distance::{DistanceAlgorithm};
+
 use pyo3::prelude::*;
 use pyo3::exceptions; 
+
+use symspell::{SymSpell, SymSpellBuilder, Verbosity, UnicodeStringStrategy};
 
 #[pyclass()]
 pub struct PySuggestion {
@@ -52,6 +51,7 @@ impl PyComposition {
         Ok(self.prob_log_sum)
     }
 }
+
 #[pyclass(module = "symspell_rust")]
 pub struct SymspellPy {
     symspell: SymSpell<UnicodeStringStrategy>,
@@ -64,7 +64,7 @@ impl SymspellPy {
         max_distance:Option<i64>,
         prefix_length:Option<i64>,
         count_threshold:Option<i64>,
-        algorithm:Option<&str>)->PyResult<()> { 
+        )->PyResult<()> { 
         
         let mut builder = SymSpellBuilder::default();
         if let Some(max_distance) = max_distance {
@@ -76,13 +76,6 @@ impl SymspellPy {
         if let Some(count_threshold) = count_threshold {
             builder.count_threshold(count_threshold);
             }
-        if let Some(algorithm) = algorithm {
-            let distance_algo = match algorithm {
-                "damerau" => DistanceAlgorithm::Damerau,
-                _ => return Err(exceptions::Exception::py_err("Not a valid edit distance algorithm")),
-            };
-            builder.distance_algorithm(distance_algo);
-        }
             Ok(obj.init({SymspellPy{symspell: builder.build().unwrap()}})) 
         }
 
@@ -105,16 +98,12 @@ impl SymspellPy {
         Ok(true)
     }
    
-    // // ________________________________________________________________________________________
-    
-    // // ________________________________________________________________________________________    
-
  
     fn load_bigram_dictionary(&mut self, file:&str, term_index:i64, count_index:i64, separator:&str) -> PyResult<bool> {
 
         let obj = File::open(file).expect("Not a valid file");
         
-        let corpus = BufReader::new(obj);//.expect("Unable to read file");
+        let corpus = BufReader::new(obj);
         
         for line in corpus.lines() {
             self.symspell.load_dictionary_line(
@@ -133,6 +122,7 @@ impl SymspellPy {
         max_edit_distance: i32,
     ) -> PyResult<Vec<PySuggestion>> {
         let res = self.symspell.lookup_compound(input, max_edit_distance as i64);
+       
         Ok(res
             .into_iter()
             .map(|sugg| {
@@ -201,3 +191,4 @@ fn symspell_rust(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
     m.add_class::<SymspellPy>()?;
     Ok(())
 }
+

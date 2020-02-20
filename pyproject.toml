@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "symspell_rust"
-version = "0.4.0"
+version = "0.1.0"
 license = "MIT"
 description="Fast and Accurate SpellChecker"
-authors = ["VJAYSLN"]
+authors = ["zoho-labs"]
 readme = "README.md"
 keywords = ["spellcheck"]
 homepage = ""

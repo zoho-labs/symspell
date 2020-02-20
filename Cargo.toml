@@ -1,9 +1,9 @@
 [package]
 name = "symspell_rust"
-version = "0.4.0"
+version = "0.1.0"
 license = "MIT"
 authors = ["zoho-labs"]
-keywords = ["spellcheck"]
+keywords = ["spellcheck, symspell, rust, python, pyo3"]
 description = "Fast and Accurate Spelling correction"
 homepage = "https://github.com/zoho-labs/symspell"
 repository = "https://github.com/zoho-labs/symspell"
@@ -18,25 +18,12 @@ overflow-checks = true
 opt-level = 3
 
 [lib]
+name = "symspell_rust" 
 crate-type = ["cdylib"]
-path = "src/lib.rs"
+
+[dependencies]  
+symspell = "0.4.0"
 
 [dependencies.pyo3]
-version = "0.8.4"
+version = "0.8.5"
 features = ["extension-module"]
-
-[dependencies]
-strsim = "^0.9"
-derive_builder = "^0.9"
-
-[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
-unidecode = "^0.3"
-
-[target.wasm32-unknown-unknown.dependencies]
-serde = "^1.0.59"
-serde_derive = "^1.0.59"
-wasm-bindgen = { version = "^0.2", features = ["serde-serialize"]}
-
-[target.wasm32-unknown-unknown.dev-dependencies]
-wasm-bindgen-test = "^0.2"
-
