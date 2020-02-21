@@ -5,7 +5,7 @@ class SymspellPy():
     SymspellPy is used for loading dictionaries, looking up words & sentences and word_segmentation.
     """
     @staticmethod
-    def __init__(self, max_distance:int = 2, prefix_length:int = 7, count_threshold:int = 1, algorithm:str = 'DAMERAU') -> SymspellPy:
+    def __init__(self, max_distance:int = 2, prefix_length:int = 7, count_threshold:int = 1) -> SymspellPy:
         """ Instantiate a new SymspellPy Class with given options. 
         Args:
             max_distance: int:
