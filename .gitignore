@@ -1,3 +1,11 @@
 target/
 Cargo.lock
 poetry.lock
+symspell_rust.egg-info/
+dist/
+symspell_rust/__pycache__
+symspell_rust/symspell_rust.cpython-37m-x86_64-linux-gnu.so
+build/
+.pytest_cache/
+tests/__pycache__
+build/
