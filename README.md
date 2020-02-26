@@ -1,6 +1,8 @@
 # symspell_rust
 Rust python bindings for symspell
 
+# Usage
+pip install symspell_rust
 ## Quick examples using Python:
 
 ```python
