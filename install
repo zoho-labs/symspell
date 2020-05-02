@@ -1,0 +1,7 @@
+you need to install rust before using symspell-rust package.
+    - curl https://sh.rustup.rs -sSf | sh -s -- -y
+    - source ~/.cargo/env
+    - rustup install nightly
+    - rustup default nightly
+And then do,
+    - pip install symspell-rust
