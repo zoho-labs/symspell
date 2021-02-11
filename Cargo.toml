@@ -22,7 +22,7 @@ name = "symspell_rust"
 crate-type = ["cdylib"]
 
 [dependencies]  
-symspell = "0.4.0"
+symspell = "0.4.1"
 
 [dependencies.pyo3]
 version = "0.8.5"
