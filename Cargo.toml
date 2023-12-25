@@ -1,6 +1,6 @@
 [package]
 name = "symspell_rust"
-version = "0.1.0"
+version = "0.2.0"
 license = "MIT"
 authors = ["zoho-labs"]
 keywords = ["spellcheck, symspell, rust, python, pyo3"]
@@ -22,8 +22,8 @@ name = "symspell_rust"
 crate-type = ["cdylib"]
 
 [dependencies]  
-symspell = "0.4.1"
+symspell = "0.4.3"
 
 [dependencies.pyo3]
-version = "0.8.5"
+version = "0.20.0"
 features = ["extension-module"]
