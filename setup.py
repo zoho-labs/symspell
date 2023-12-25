@@ -4,7 +4,7 @@ from setuptools import find_packages
 
 setup(
     name="symspell_rust",
-    version="0.2.0",
+    version="0.3.0",
     description="Fast and Accurate SpellChecker",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     keywords="Symspell Spellchecker rust python_bind PyO3",
