@@ -2,7 +2,8 @@ use std::fs::File;
 use std::io::{BufRead, BufReader};
 
 use pyo3::prelude::*;
-use pyo3::exceptions; 
+use pyo3::PyErr;
+use pyo3::exceptions::PyValueError;
 
 use symspell::{SymSpell, SymSpellBuilder, Verbosity, UnicodeStringStrategy};
 
@@ -60,11 +61,11 @@ pub struct SymspellPy {
 #[pymethods]
 impl SymspellPy {
     #[new]
-    fn new(obj: &PyRawObject,
+    fn new(
         max_distance:Option<i64>,
         prefix_length:Option<i64>,
         count_threshold:Option<i64>,
-        )->PyResult<()> { 
+        ) -> Self {
         
         let mut builder = SymSpellBuilder::default();
         if let Some(max_distance) = max_distance {
@@ -76,10 +77,11 @@ impl SymspellPy {
         if let Some(count_threshold) = count_threshold {
             builder.count_threshold(count_threshold);
             }
-            Ok(obj.init({SymspellPy{symspell: builder.build().unwrap()}})) 
+
+        SymspellPy{symspell: builder.build().unwrap()}
         }
 
-    
+
 
     fn load_dictionary(&mut self, file:&str, term_index:i64, count_index:i64, separator:&str) -> PyResult<bool> {
 
@@ -147,7 +149,7 @@ impl SymspellPy {
             0 => Verbosity::Top,
             1 => Verbosity::Closest,
             2 => Verbosity::All,
-            _ => return Err(exceptions::Exception::py_err("Verbosity must be between 0 and 2")),
+            _ => return Err(PyErr::new::<PyValueError, _>("Verbosity must be between 0 and 2")),
         };
 
         let res = self
